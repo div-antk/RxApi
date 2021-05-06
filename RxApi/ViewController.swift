@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Instantiate
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -18,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        tableView.register
     }
 
 

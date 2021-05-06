@@ -9,5 +9,6 @@ target 'RxApi' do
   pod 'Moya/RxSwift'
   pod 'RxCocoa'
   pod 'Instantiate'
+  pod 'InstantiateStandard'
 
 end
