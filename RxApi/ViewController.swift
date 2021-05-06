@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,4 +21,5 @@ class ViewController: UIViewController {
 
 
 }
+
 
