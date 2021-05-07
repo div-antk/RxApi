@@ -7,8 +7,9 @@
 
 import UIKit
 import Instantiate
+import InstantiateStandard
 
-class TableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell, Reusable {
 
     @IBOutlet weak var titleLabel: UILabel!
     

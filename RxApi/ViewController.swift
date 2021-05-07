@@ -9,9 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Instantiate
+import InstantiateStandard
 
-
-class ViewController: UIViewController {
+class ViewController: UIViewController, StoryboardInstantiatable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
@@ -19,7 +19,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register
+//        let cell = UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil)
+//        tableView.register(UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier.)
+        
+        self.tableView.register(UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: TableViewCell.reusableIdentifier)
+
+        textField.rx.text.orEmpty
+            .filter{$0.count >= 1}
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            
     }
 
 
