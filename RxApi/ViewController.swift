@@ -26,8 +26,9 @@ class ViewController: UIViewController, StoryboardInstantiatable {
 
         textField.rx.text.orEmpty
             .filter{$0.count >= 1}
-            .debounce(0.5, scheduler: MainScheduler.instance)
-            
+            .debounce(.microseconds(5), scheduler: MainScheduler.instance)
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(viewModel.searchWord)
     }
 
 
