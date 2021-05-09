@@ -14,7 +14,16 @@ final class ViewModel {
     private let disposeBag = DisposeBag()
     
     private let searchWordStream = PublishSubject<String>()
-    private let eventStream = PublishSubject<Events?>()
+//    private let eventsStream = PublishSubject<Events?>()
     
     private let startedAtStream = PublishSubject<String>()
+}
+
+extension ViewModel {
+    var searchWord: AnyObserver<(String)> {
+        return searchWordStream.asObserver()
+    }
+    var startedAt: AnyObserver<String> {
+        return startedAtStream.asObserver()
+    }
 }

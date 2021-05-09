@@ -16,6 +16,10 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     
+    private let viewModel: ViewModel = ViewModel()
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,11 +28,16 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         
         self.tableView.register(UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: TableViewCell.reusableIdentifier)
 
+        // テキストフィールドに入力された文字をvmにbind
         textField.rx.text.orEmpty
             .filter{$0.count >= 1}
             .debounce(.microseconds(5), scheduler: MainScheduler.instance)
             .asDriver(onErrorDriveWith: Driver.empty())
             .drive(viewModel.searchWord)
+            .disposed(by: disposeBag)
+        
+        // イベントの検索結果のストリームを購読する
+        
     }
 
 
