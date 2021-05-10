@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0ED548C3127B0B4686DFA30D /* Pods_RxApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1100F8FEB6A0202AA6C0D0 /* Pods_RxApi.framework */; };
+		3B1513F126481EAF00B244FB /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1513F026481EAF00B244FB /* ApiModel.swift */; };
 		3B93762A264438DA00937DAE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B937628264438DA00937DAE /* TableViewCell.swift */; };
 		3B93762B264438DA00937DAE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B937629264438DA00937DAE /* TableViewCell.xib */; };
 		3B9376372646DB6C00937DAE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9376362646DB6C00937DAE /* ViewModel.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B1513F026481EAF00B244FB /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		3B937628264438DA00937DAE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		3B937629264438DA00937DAE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		3B9376362646DB6C00937DAE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				3BDF52EE263C4C54006E5EDF /* ViewController.swift */,
 				3B937628264438DA00937DAE /* TableViewCell.swift */,
 				3B9376362646DB6C00937DAE /* ViewModel.swift */,
+				3B1513F026481EAF00B244FB /* ApiModel.swift */,
 				3B937629264438DA00937DAE /* TableViewCell.xib */,
 				3BDF52F0263C4C54006E5EDF /* Main.storyboard */,
 				3BDF52F3263C4C56006E5EDF /* Assets.xcassets */,
@@ -219,6 +222,7 @@
 				3BDF52EF263C4C54006E5EDF /* ViewController.swift in Sources */,
 				3B93762A264438DA00937DAE /* TableViewCell.swift in Sources */,
 				3BDF52EB263C4C54006E5EDF /* AppDelegate.swift in Sources */,
+				3B1513F126481EAF00B244FB /* ApiModel.swift in Sources */,
 				3BDF52ED263C4C54006E5EDF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
