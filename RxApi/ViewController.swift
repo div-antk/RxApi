@@ -17,8 +17,10 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var textField: UITextField!
     
     private let viewModel: ViewModel = ViewModel()
-    
+    private var articlesDataSource: [Article]?
     private let disposeBag = DisposeBag()
+    
+    private let cellReuseId = "sampleCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             .disposed(by: disposeBag)
         
         // イベントの検索結果のストリームを購読する
+        
         
     }
 

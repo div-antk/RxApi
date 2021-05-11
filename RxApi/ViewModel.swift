@@ -14,11 +14,23 @@ final class ViewModel {
     private let disposeBag = DisposeBag()
     
     private let searchWordStream = PublishSubject<String>()
-//    private let articlesStream = PublishSubject<Articles?>()
+    private let articlesStream = PublishSubject<Articles?>()
     
     private let startedAtStream = PublishSubject<String>()
+    private let formattedDateStream = PublishSubject<String>()
+    
+    init() {
+        searchWordStream.flatMapLatest { word -> Observable<Article?> in
+            print("serchWord:\(word)")
+            let model = ApiModel()
+            return model.searchArticles(word: word).catchErrorJustReturn(nil)
+        }
+        .subscribe(articlesStream)
+        .disposed(by: disposeBag)
+    }
 }
 
+// MARK: Observer
 extension ViewModel {
     var searchWord: AnyObserver<(String)> {
         return searchWordStream.asObserver()
@@ -28,6 +40,7 @@ extension ViewModel {
     }
 }
 
+// MARK: Observable
 //extension ViewModel {
 //
 //}
