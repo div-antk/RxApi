@@ -45,10 +45,20 @@ final class ApiModel {
     }
 }
 
-struct Events: Codable {
+struct Articles: Codable {
     let articles: [Article]?
     init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKey.self)
-        articles = try values.decodeIfPresent
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        articles = try values.decodeIfPresent([Article].self, forKey: .articles)
+    }
+}
+
+struct Article: Codable {
+    let title: String?
+    let startedAt: String?
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        title = try values.decodeIfPresent(String.self, forKey: .title)
+        startedAt = try values.decodeIfPresent(String.self, forKey: .startedAt)
     }
 }
