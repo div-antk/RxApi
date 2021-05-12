@@ -41,6 +41,11 @@ extension ViewModel {
 }
 
 // MARK: Observable
-//extension ViewModel {
-//
-//}
+extension ViewModel {
+    var articles: Observable<Articles?> {
+        return articlesStream.asObserver()
+    }
+    var formattedDate: Observable<String> {
+        return formattedDateStream.asObserver()
+    }
+}
