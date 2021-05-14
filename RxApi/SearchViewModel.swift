@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  SearchViewModel.swift
 //  RxApi
 //
 //  Created by Takuya Ando on 2021/05/08.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class ViewModel {
+final class SearchViewModel {
     
     private let disposeBag = DisposeBag()
     
@@ -31,7 +31,7 @@ final class ViewModel {
 }
 
 // MARK: Observer
-extension ViewModel {
+extension SearchViewModel {
     var searchWord: AnyObserver<(String)> {
         return searchWordStream.asObserver()
     }
@@ -41,7 +41,7 @@ extension ViewModel {
 }
 
 // MARK: Observable
-extension ViewModel {
+extension SearchViewModel {
     var articles: Observable<Articles?> {
         return articlesStream.asObserver()
     }

@@ -16,8 +16,14 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     
-    private let viewModel: ViewModel = ViewModel()
+    // VM初期化時、動作に依存するAPI実行のオブジェクトを注入
+    // テスト実行時にモック用のオブジェクトと置き換えて、ニセの通信によってテスト時間を短縮するため
+    private let viewModel = SearchViewModel(
+        wikipadiaAPI: WikipediaDefaultAPI(URLSession: .shared)
+    )
+    
     private var articlesDataSource: [Article]?
+    
     private let disposeBag = DisposeBag()
     
     private let cellReuseId = "sampleCell"
@@ -25,6 +31,9 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let input = SearchViewModel.input(
+            searchWord: textField.rx.text.orEmpty.
+        )
 //        let cell = UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil)
 //        tableView.register(UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier.)
         
