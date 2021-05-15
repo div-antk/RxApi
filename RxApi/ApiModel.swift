@@ -8,57 +8,43 @@
 import Foundation
 import RxSwift
 
-// TODO:あとでMoyaに書き直す
-import Alamofire
-
-final class ApiModel {
+struct SearchResponce: Decodable {
+    let query: Query
     
-    func searchArticles(word: String) -> Observable<Articles?> {
-        return Observable.create { observer in
-            let url = "https://connpass.com/api/v1/event/?keyword=\(word)"
-            AF.request(url,
-                       method: .get,
-                       parameters: nil)
-                .responseJSON(completionHandler: { response in
-                    switch response.result {
-                    
-                    case.success(_):
-                        print("API成功\n")
-                        if let data = response.data {
-                            let decoder = JSONDecoder()
-                            decoder.keyDecodingStrategy = .convertFromSnakeCase
-                            if let result = try? decoder.decode(Articles.self, from: data) {
-                                print(result)
-                                observer.onNext(result)
-                            }
-                        }
-                        observer.onCompleted()
-                    
-                    case.failure(let error):
-                        print("API失敗\n")
-                        print(error)
-                        observer.onError(error)
-                    }
-                })
-            return Disposables.create()
-        }
+    struct Query: Decodable {
+        let search: [ApiModel]
     }
 }
 
-struct Articles: Codable {
-    let articles: [Article]?
+struct ApiModel {
+    let id: String
+    let title: String
+    let url: URL
+}
+
+extension ApiModel: Decodable {
+    
+    private enum CodingKeys: String, CodingKey {
+        
+        // WikipediaAPIに準拠
+        case id = "padeid"
+        case title
+    }
+    
     init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        articles = try values.decodeIfPresent([Article].self, forKey: .articles)
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = String(try container.decode(Int.self, forKey: .id))
+        self.title = try container.decode(String.self, forKey: .title)
+        self.url = URL(string: "https://ja.wikipedia.org/w/input.php?curid=\(id)")!
     }
 }
 
-struct Article: Codable {
-    let title: String?
-    let startedAt: String?
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        title = try values.decodeIfPresent(String.self, forKey: .title)
-        startedAt = try values.decodeIfPresent(String.self, forKey: .startedAt)
+// protocol Equatableに準拠して比較できるようにする
+extension ApiModel: Equatable {
+    
+    static func == (lhs: ApiModel, rhs: ApiModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }
