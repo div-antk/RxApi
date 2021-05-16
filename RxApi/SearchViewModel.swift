@@ -20,10 +20,10 @@ class SearchViewModel {
     
     private let disposeBag = DisposeBag()
     
-    private let wikipediaAPI: WikipediaAPI
+    private let wikipediaAPI: ApiRepository
     private let scheduler: SchedulerType
     
-    init(wikipediaAPI: WikipediaAPI,
+    init(wikipediaAPI: ApiRepository,
          scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
         self.wikipediaAPI = wikipediaAPI
         self.scheduler = scheduler
@@ -45,16 +45,24 @@ extension SearchViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        let filerdText = input.searchWord
+        let filterdText = input.searchWord
             .debounce(.milliseconds(300), scheduler: scheduler)
             .share(replay: 1)
         
-        let sequence = filerdText
+        let sequence = filterdText
             .flatMapLatest { [unowned self] text -> Observable<Event<[ApiModel]>> in
                 return self.wikipediaAPI
-                    .search(from: text)
-                    .
+                .search(from: text)
+                .materialize()
             }
+            .share(replay: 1)
+        
+        let wikipediaPages = sequence.elements()
+        
+        let _searchDescription = PublishRelay<String>()
+        
+        wikipediaPages.
+        
     }
     
     

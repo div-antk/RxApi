@@ -37,7 +37,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         
         let output = viewModel.transform(input: input)
         
-        ou
+        
         
 //        let cell = UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil)
 //        tableView.register(UINib(nibName: TableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier.)
