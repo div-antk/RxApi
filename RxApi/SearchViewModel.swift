@@ -50,18 +50,19 @@ extension SearchViewModel: ViewModelType {
             .share(replay: 1)
         
         let sequence = filterdText
-            .flatMapLatest { [unowned self] text -> Observable<Event<[ApiModel]>> in
+            .flatMapLatest { [unowned self] text -> Observable<Event<[ApiRepository]>> in
                 return self.wikipediaAPI
-                .search(from: text)
-                .materialize()
-            }
-            .share(replay: 1)
-        
+              .search(from: text)
+              .materialize()
+          }
+          .share(replay: 1)
+
         let wikipediaPages = sequence.elements()
         
         let _searchDescription = PublishRelay<String>()
         
-        wikipediaPages.
+        
+        
         
     }
     
