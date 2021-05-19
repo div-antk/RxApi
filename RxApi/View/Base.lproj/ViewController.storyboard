@@ -20,9 +20,8 @@
                                 <rect key="frame" x="0.0" y="78" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="6g5-li-4EV">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNf-f3-U9B">
                                 <rect key="frame" x="0.0" y="44" width="414" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -30,15 +29,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="NNf-f3-U9B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1cP-KY-QRj"/>
                             <constraint firstAttribute="trailing" secondItem="NlM-Lp-x5y" secondAttribute="trailing" id="8lq-SK-oJb"/>
+                            <constraint firstItem="NNf-f3-U9B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KcQ-bB-R3a"/>
+                            <constraint firstItem="NNf-f3-U9B" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LJE-NA-Agi"/>
+                            <constraint firstItem="NlM-Lp-x5y" firstAttribute="top" secondItem="NNf-f3-U9B" secondAttribute="bottom" id="P0f-ud-rJO"/>
                             <constraint firstItem="NlM-Lp-x5y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iwc-Dl-UFJ"/>
-                            <constraint firstItem="NlM-Lp-x5y" firstAttribute="top" secondItem="6g5-li-4EV" secondAttribute="bottom" id="uAU-7p-fau"/>
                             <constraint firstAttribute="bottom" secondItem="NlM-Lp-x5y" secondAttribute="bottom" id="zoo-4I-Reb"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchTextField" destination="NNf-f3-U9B" id="Oig-Z8-t59"/>
                         <outlet property="tableView" destination="NlM-Lp-x5y" id="yrz-tf-36c"/>
-                        <outlet property="textField" destination="6g5-li-4EV" id="zhc-we-6W9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
