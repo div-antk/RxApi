@@ -22,28 +22,29 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let provider = MoyaProvider<Mtg>()
+        let provider = MoyaProvider<MtgAPI>()
 
 //        state = .error
 //        state = .loading
         
-        provider.request(.cards) { [weak self] result in
-            guard let self = self else { return }
+        provider.request(.cards) { (result) in
+//            guard let self = self else { return }
             
             switch result {
             case .success(let response):
                 let data = response.data
-                let cards = try? JSONDecoder().decode([Card].self, from: data)
+//                let cards = try? JSONDecoder()
+//
+//                for card in cards! {
+//                    print(card.name, card.text)
+//                }
+                print(data)
                 
-                
-                
-            case .failure:
-                self.state = .error
+            case .failure(let error):
+                print(error)
             }
         }
     }
-
-
 }
 
 

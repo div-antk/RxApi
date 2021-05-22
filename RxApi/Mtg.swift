@@ -8,15 +8,12 @@
 import Foundation
 import Moya
 
-public enum Mtg {
+public enum MtgAPI {
     
-    static private let publicKey = ""
-    static private let privateKey = ""
-
     case cards
 }
 
-extension Mtg: TargetType {
+extension MtgAPI: TargetType {
     
     public var baseURL: URL {
         return URL(string: "https://api.magicthegathering.io/v1")!
