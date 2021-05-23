@@ -16,23 +16,20 @@ class ViewController: UIViewController, StoryboardInstantiatable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    
+        
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let provider = MoyaProvider<MtgAPI>()
-
-//        state = .error
-//        state = .loading
         
-        provider.request(.cards) { (result) in
-//            guard let self = self else { return }
+        provider.request(.cards) { result in
             
             switch result {
             case .success(let response):
-                let data = response.data
+                
+//                let data = response.data
 //                let cards = try? JSONDecoder()
 //
 //                for card in cards! {
