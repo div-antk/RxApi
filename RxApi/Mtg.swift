@@ -41,6 +41,7 @@ extension MtgAPI: TargetType {
                 
         switch self {
         case .cards:
+            print("きてます")
             return .requestParameters(
                 parameters: [
                     "name" : "dark"

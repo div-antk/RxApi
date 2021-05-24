@@ -28,14 +28,15 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             
             switch result {
             case .success(let response):
+                do {
+                    let data = response.data
+                    let cards = try? JSONDecoder().decode(Cards.self, from: data)
+
+                    print(cards?.name)
+                } catch {
+                    print("失敗")
+                }
                 
-//                let data = response.data
-//                let cards = try? JSONDecoder()
-//
-//                for card in cards! {
-//                    print(card.name, card.text)
-//                }
-                print(data)
                 
             case .failure(let error):
                 print(error)
