@@ -11,6 +11,6 @@ import Moya
 
 struct Cards: Codable {
     let name: String
-    let text: String
+//    let text: String
 }
 

@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 public enum MtgAPI {
-    
     case cards
 }
 
@@ -27,10 +26,7 @@ extension MtgAPI: TargetType {
     }
     
     public var method: Moya.Method {
-        switch self {
-        case .cards:
-            return .get
-        }
+        return Moya.Method.get
     }
     
     public var sampleData: Data {
@@ -38,13 +34,13 @@ extension MtgAPI: TargetType {
     }
     
     public var task: Task {
-                
+
         switch self {
         case .cards:
-            print("きてます")
             return .requestParameters(
                 parameters: [
-                    "name" : "dark"
+                    "name" : "dark",
+//                    "text" : "whenever"
                 ], encoding: URLEncoding.default)
         }
     }

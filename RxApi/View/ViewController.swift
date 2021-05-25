@@ -32,7 +32,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                     let data = response.data
                     let cards = try? JSONDecoder().decode(Cards.self, from: data)
 
-                    print(cards?.name)
+                    print(cards)
                 } catch {
                     print("失敗")
                 }
