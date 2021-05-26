@@ -23,25 +23,40 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         super.viewDidLoad()
 
         let provider = MoyaProvider<MtgAPI>()
-        
-        provider.request(.cards) { result in
-            
+
+        provider.request(.cards) { (result) in
+
             switch result {
             case .success(let response):
-                do {
                     let data = response.data
-                    let cards = try? JSONDecoder().decode(Cards.self, from: data)
+                    let cards = try? JSONDecoder().decode([Cards].self, from: data)
 
-                    print(cards)
-                } catch {
-                    print("失敗")
-                }
-                
-                
+                print(cards)
+//                for card in cards! {
+//                    print(card)
+//                }
+
+
+
             case .failure(let error):
                 print(error)
             }
         }
+
+//        let provider = MoyaProvider<ProblemAPI>()
+//             provider.request(.problem) { (result) in
+//                 switch result {
+//                 case .success(let response):
+//                     let data = response.data
+//                     let problems = try? JSONDecoder().decode([Problem].self, from: data)
+//
+//                     for problem in problems! {
+//                         print(problem.id, problem.contestId, problem.title)
+//                     }
+//                 case .failure(let error):
+//                     print(error)
+//                 }
+//             }
     }
 }
 
