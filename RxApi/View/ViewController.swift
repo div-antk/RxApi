@@ -28,10 +28,10 @@ class ViewController: UIViewController, StoryboardInstantiatable {
 
             switch result {
             case .success(let response):
-                    let data = response.data
-                    let cards = try? JSONDecoder().decode([Cards].self, from: data)
+//                    let data = response.data
+                let cards = try? JSONDecoder().decode([Cards].self, from: response.data)
 
-                print(cards)
+                print(response.data)
 //                for card in cards! {
 //                    print(card)
 //                }
@@ -41,6 +41,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             case .failure(let error):
                 print(error)
             }
+
         }
 
 //        let provider = MoyaProvider<ProblemAPI>()

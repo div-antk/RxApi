@@ -15,13 +15,13 @@ enum MtgAPI {
 extension MtgAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.magicthegathering.io")!
+        return URL(string: "https://api.magicthegathering.io/v1/cards/386616")!
     }
     
     var path: String {
         switch self {
         case .cards:
-            return "/v1/cards"
+            return ""
         }
     }
     
@@ -50,7 +50,7 @@ extension MtgAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        ["Content-Type": "application/json"]
+        ["Total-Count": "10"]
     }
     
     var validationType: ValidationType {
