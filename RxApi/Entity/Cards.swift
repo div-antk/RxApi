@@ -9,10 +9,10 @@ import Foundation
 import RxSwift
 import Moya
 
-struct CardList: Codable {
-    let cardList: Cards
+struct CardListResponse: Codable {
+    let cards: [Cards]
 }
 
 struct Cards: Codable {
-//    let name: String
+    let name: String
 }

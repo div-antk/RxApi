@@ -33,24 +33,13 @@ extension MtgAPI: TargetType {
         return Data()
     }
     
-//    public var task: Task {
-//
-//        switch self {
-//        case .cards:
-//            return .requestParameters(
-//                parameters: [
-//                    "name" : "dark",
-////                    "text" : "whenever"
-//                ], encoding: URLEncoding.default)
-//        }
-//    }
-//
+    // POSTで送る値。無いので requestPlain
     var task: Task {
         return .requestPlain
     }
     
     var headers: [String : String]? {
-        ["Total-Count": "10"]
+        ["Content-Type": "application/json"]
     }
     
     var validationType: ValidationType {

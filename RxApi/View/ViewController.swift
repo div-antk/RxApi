@@ -17,7 +17,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var cards: CardList?
+    var cards: CardListResponse?
     
     private let disposeBag = DisposeBag()
     
@@ -34,23 +34,20 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                 //                let cards = try? JSONDecoder().decode([Cards].self, from: data)
                 
                 do {
-                    let cards = try JSONDecoder().decode(CardList.self, from: data)
-                    print("(´・ω・｀)", cards)
-                   
+                    let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
+                    let statusCode = response.statusCode
+                    print("(´・ω・｀)", cards.cards.count, statusCode)
+                    
                     self.cards = cards
                 } catch(let error) {
                     
                     print(error)
                 }
-                
-                
-                
-                
+
             case .failure(let error):
                 print(error)
             }
         }
-        print(cards?.cardList)
         
     }
 }
