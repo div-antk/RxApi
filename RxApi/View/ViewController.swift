@@ -13,51 +13,45 @@ import Instantiate
 import InstantiateStandard
 
 class ViewController: UIViewController, StoryboardInstantiatable {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-        
+    
+    var cards: CardList?
+    
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let provider = MoyaProvider<MtgAPI>()
-
+        
         provider.request(.cards) { (result) in
-
+            
             switch result {
             case .success(let response):
-//                    let data = response.data
-                let cards = try? JSONDecoder().decode([Cards].self, from: response.data)
-
-                print(response.data)
-//                for card in cards! {
-//                    print(card)
-//                }
-
-
-
+                let data = response.data
+                //                let cards = try? JSONDecoder().decode([Cards].self, from: data)
+                
+                do {
+                    let cards = try JSONDecoder().decode(CardList.self, from: data)
+                    print("(´・ω・｀)", cards)
+                   
+                    self.cards = cards
+                } catch(let error) {
+                    
+                    print(error)
+                }
+                
+                
+                
+                
             case .failure(let error):
                 print(error)
             }
-
         }
-
-//        let provider = MoyaProvider<ProblemAPI>()
-//             provider.request(.problem) { (result) in
-//                 switch result {
-//                 case .success(let response):
-//                     let data = response.data
-//                     let problems = try? JSONDecoder().decode([Problem].self, from: data)
-//
-//                     for problem in problems! {
-//                         print(problem.id, problem.contestId, problem.title)
-//                     }
-//                 case .failure(let error):
-//                     print(error)
-//                 }
-//             }
+        print(cards?.cardList)
+        
     }
 }
 

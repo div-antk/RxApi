@@ -15,13 +15,13 @@ enum MtgAPI {
 extension MtgAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.magicthegathering.io/v1/cards/386616")!
+        return URL(string: "https://api.magicthegathering.io/v1")!
     }
     
     var path: String {
         switch self {
         case .cards:
-            return ""
+            return "/cards"
         }
     }
     
@@ -44,7 +44,7 @@ extension MtgAPI: TargetType {
 //                ], encoding: URLEncoding.default)
 //        }
 //    }
-    
+//
     var task: Task {
         return .requestPlain
     }
