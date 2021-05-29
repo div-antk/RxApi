@@ -15,4 +15,5 @@ struct CardListResponse: Codable {
 
 struct Cards: Codable {
     let name: String
+    let manaCost: String
 }

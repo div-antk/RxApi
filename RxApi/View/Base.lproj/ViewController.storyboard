@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,31 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NlM-Lp-x5y">
-                                <rect key="frame" x="0.0" y="78" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNf-f3-U9B">
                                 <rect key="frame" x="0.0" y="44" width="414" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aGH-jY-ScS">
+                                <rect key="frame" x="0.0" y="78" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4M5-2I-qPI">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="KeG-dI-g2E">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wrj-vn-Ftd">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NNf-f3-U9B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1cP-KY-QRj"/>
-                            <constraint firstAttribute="trailing" secondItem="NlM-Lp-x5y" secondAttribute="trailing" id="8lq-SK-oJb"/>
+                            <constraint firstAttribute="bottom" secondItem="aGH-jY-ScS" secondAttribute="bottom" id="8gR-cA-Twi"/>
+                            <constraint firstItem="aGH-jY-ScS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FK4-j0-FAC"/>
                             <constraint firstItem="NNf-f3-U9B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KcQ-bB-R3a"/>
                             <constraint firstItem="NNf-f3-U9B" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LJE-NA-Agi"/>
-                            <constraint firstItem="NlM-Lp-x5y" firstAttribute="top" secondItem="NNf-f3-U9B" secondAttribute="bottom" id="P0f-ud-rJO"/>
-                            <constraint firstItem="NlM-Lp-x5y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iwc-Dl-UFJ"/>
-                            <constraint firstAttribute="bottom" secondItem="NlM-Lp-x5y" secondAttribute="bottom" id="zoo-4I-Reb"/>
+                            <constraint firstItem="aGH-jY-ScS" firstAttribute="top" secondItem="NNf-f3-U9B" secondAttribute="bottom" id="VJn-93-ibw"/>
+                            <constraint firstItem="aGH-jY-ScS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fN1-Pn-tTT"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="aGH-jY-ScS" id="A8b-Dq-n1b"/>
                         <outlet property="searchTextField" destination="NNf-f3-U9B" id="Oig-Z8-t59"/>
-                        <outlet property="tableView" destination="NlM-Lp-x5y" id="yrz-tf-36c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

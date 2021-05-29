@@ -10,6 +10,8 @@
 		0ED548C3127B0B4686DFA30D /* Pods_RxApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1100F8FEB6A0202AA6C0D0 /* Pods_RxApi.framework */; };
 		3B0731C7265E8E940043BD5A /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0731C6265E8E940043BD5A /* Problem.swift */; };
 		3B0731CB265E8ECD0043BD5A /* ProblemAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0731CA265E8ECD0043BD5A /* ProblemAPI.swift */; };
+		3B0731D026625E2C0043BD5A /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0731CE26625E2C0043BD5A /* CardCollectionViewCell.swift */; };
+		3B0731D126625E2C0043BD5A /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0731CF26625E2C0043BD5A /* CardCollectionViewCell.xib */; };
 		3B1513F126481EAF00B244FB /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1513F026481EAF00B244FB /* Cards.swift */; };
 		3B38150B2655595700FAA7B8 /* MtgAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B38150A2655595700FAA7B8 /* MtgAPI.swift */; };
 		3B93762A264438DA00937DAE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B937628264438DA00937DAE /* TableViewCell.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		3B0731C6265E8E940043BD5A /* Problem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		3B0731CA265E8ECD0043BD5A /* ProblemAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemAPI.swift; sourceTree = "<group>"; };
+		3B0731CE26625E2C0043BD5A /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B0731CF26625E2C0043BD5A /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		3B1513F026481EAF00B244FB /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		3B38150A2655595700FAA7B8 /* MtgAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgAPI.swift; sourceTree = "<group>"; };
 		3B937628264438DA00937DAE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 			children = (
 				3BDF52EE263C4C54006E5EDF /* ViewController.swift */,
 				3BDF52F0263C4C54006E5EDF /* ViewController.storyboard */,
+				3B0731CE26625E2C0043BD5A /* CardCollectionViewCell.swift */,
+				3B0731CF26625E2C0043BD5A /* CardCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BDF52F7263C4C56006E5EDF /* LaunchScreen.storyboard in Resources */,
+				3B0731D126625E2C0043BD5A /* CardCollectionViewCell.xib in Resources */,
 				3B93762B264438DA00937DAE /* TableViewCell.xib in Resources */,
 				3BDF52F4263C4C56006E5EDF /* Assets.xcassets in Resources */,
 				3BDF52F2263C4C54006E5EDF /* ViewController.storyboard in Resources */,
@@ -251,6 +258,7 @@
 				3B1513F126481EAF00B244FB /* Cards.swift in Sources */,
 				3B38150B2655595700FAA7B8 /* MtgAPI.swift in Sources */,
 				3BDF52ED263C4C54006E5EDF /* SceneDelegate.swift in Sources */,
+				3B0731D026625E2C0043BD5A /* CardCollectionViewCell.swift in Sources */,
 				3B0731C7265E8E940043BD5A /* Problem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

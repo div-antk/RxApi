@@ -14,7 +14,7 @@ import InstantiateStandard
 
 class ViewController: UIViewController, StoryboardInstantiatable {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     
     var cards: CardListResponse?
@@ -31,24 +31,17 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             switch result {
             case .success(let response):
                 let data = response.data
-                //                let cards = try? JSONDecoder().decode([Cards].self, from: data)
-                
                 do {
                     let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
-                    let statusCode = response.statusCode
-                    print("(´・ω・｀)", cards.cards.count, statusCode)
-                    
                     self.cards = cards
+                    print(cards)
                 } catch(let error) {
-                    
                     print(error)
                 }
-
             case .failure(let error):
                 print(error)
             }
         }
-        
     }
 }
 
