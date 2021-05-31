@@ -43,8 +43,8 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             }
         }
         
-        collectionView.delegate
-        collectionView.dataSource
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         collectionView.register(UINib(nibName: CardCollectionViewCell.reusableIdentifier, bundle: nil), forCellWithReuseIdentifier: CardCollectionViewCell.reusableIdentifier)
     }
@@ -53,16 +53,20 @@ class ViewController: UIViewController, StoryboardInstantiatable {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return (cards?.cards.count)!
+//        return (cards?.cards.count)!
+        print(cards?.cards)
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (cards?.cards.count)!
+//        return (cards?.cards.count)!
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reusableIdentifier, for: indexPath) as! CardCollectionViewCell
+
         
         return cell
     }
