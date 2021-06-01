@@ -54,7 +54,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
 //        return (cards?.cards.count)!
-        print(cards?.cards)
+//        print(cards?.cards)
         return 1
     }
     
@@ -67,9 +67,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reusableIdentifier, for: indexPath) as! CardCollectionViewCell
 
+        cell.costLabel.text = cards?.cards[indexPath.row].manaCost
         
         return cell
     }
     
     
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    // カスタムセルのサイズ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: view.frame.width - 32, height: 600)
+    }
+
+    // 各カスタムセル外枠の余白
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        return UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+    }
 }
