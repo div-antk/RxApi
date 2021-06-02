@@ -34,7 +34,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                 do {
                     let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
                     self.cards = cards
-                    print(cards)
+                    self.collectionView.reloadData()
                 } catch(let error) {
                     print(error)
                 }
@@ -66,8 +66,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reusableIdentifier, for: indexPath) as! CardCollectionViewCell
-
-        cell.costLabel.text = cards?.cards[indexPath.row].manaCost
+        
+        print(type(of: cards?.cards[indexPath.row].text))
+        
+        if let name = cards?.cards[indexPath.row].name {
+            cell.nameLabel.text = name
+        }
+        
+        if let manaCost = cards?.cards[indexPath.row].manaCost {
+            cell.costLabel.text = manaCost
+        }
+        
+        if let text = cards?.cards[indexPath.row].text {
+            cell.textLabel.text = text
+        }
+        
+        if let text = cards?.cards[indexPath.row].text {
+            cell.textLabel.text = text
+        }
+        
+        cell.ptLabel.text = "\() / \()"
         
         return cell
     }
@@ -83,8 +101,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 
     // 各カスタムセル外枠の余白
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-
-        return UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//        return UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+//    }
 }
