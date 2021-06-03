@@ -11,6 +11,7 @@ import RxCocoa
 import Moya
 import Instantiate
 import InstantiateStandard
+import Kingfisher
 
 class ViewController: UIViewController, StoryboardInstantiatable {
     
@@ -75,6 +76,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if let manaCost = cards?.cards[indexPath.row].manaCost {
             cell.costLabel.text = manaCost
+        }
+        
+        if let cardImage = cards?.cards[indexPath.row].imageUrl {
+            cell.imageView.kf.setImage(with: URL(string: cardImage))
         }
         
         if let text = cards?.cards[indexPath.row].text {
