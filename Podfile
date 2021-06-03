@@ -10,5 +10,5 @@ target 'RxApi' do
   pod 'RxCocoa'
   pod 'Instantiate'
   pod 'InstantiateStandard'
-
+  pod 'Kingfisher'
 end

@@ -67,7 +67,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reusableIdentifier, for: indexPath) as! CardCollectionViewCell
         
-        print(type(of: cards?.cards[indexPath.row].text))
+        print(cards?.cards[indexPath.row].imageUrl)
         
         if let name = cards?.cards[indexPath.row].name {
             cell.nameLabel.text = name
@@ -85,7 +85,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.textLabel.text = text
         }
         
-        cell.ptLabel.text = "\() / \()"
+        cell.ptLabel.text = "\(cards?.cards[indexPath.row].power) / \(cards?.cards[indexPath.row].toughness)"
         
         return cell
     }
