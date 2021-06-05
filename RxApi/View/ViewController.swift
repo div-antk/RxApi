@@ -43,6 +43,11 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                 print(error)
             }
         }
+        
+        reloadButton.layer.cornerRadius = 4
+        reloadButton.rx.tap.subscribe { [weak self] _ in
+            self?.cardImage()
+        }.disposed(by: disposeBag)
     }
     
     func cardImage() {
