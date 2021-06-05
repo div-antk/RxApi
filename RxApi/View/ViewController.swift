@@ -60,7 +60,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return (cards?.cards.count)!
+//        if let count = cards?.cards.count {
+//            return count
+//        }
         return 1
     }
     
@@ -68,44 +70,21 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reusableIdentifier, for: indexPath) as! CardCollectionViewCell
         
-        print(cards?.cards[indexPath.row].imageUrl)
-        
-        if let name = cards?.cards[indexPath.row].name {
-            cell.nameLabel.text = name
+        if let cardImage = cards?.cards.randomElement()?.imageUrl {
+            cell.cardImageView.kf.setImage(with: URL(string: cardImage))
         }
-        
-        if let manaCost = cards?.cards[indexPath.row].manaCost {
-            cell.costLabel.text = manaCost
-        }
-        
-        if let cardImage = cards?.cards[indexPath.row].imageUrl {
-            cell.imageView.kf.setImage(with: URL(string: cardImage))
-        }
-        
-        if let text = cards?.cards[indexPath.row].text {
-            cell.textLabel.text = text
-        }
-        
-        if let text = cards?.cards[indexPath.row].text {
-            cell.textLabel.text = text
-        }
-        
-        cell.ptLabel.text = "\(cards?.cards[indexPath.row].power) / \(cards?.cards[indexPath.row].toughness)"
-        
         return cell
     }
-    
-    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     // カスタムセルのサイズ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: view.frame.width - 32, height: 600)
+        return CGSize(width: view.frame.width - 40, height: view.frame.height - 60)
     }
 
-    // 各カスタムセル外枠の余白
+//    // 各カスタムセル外枠の余白
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //
 //        return UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
