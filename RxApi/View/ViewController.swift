@@ -30,6 +30,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         
         provider.request(.cards) { (result) in
             switch result {
+            
             case .success(let response):
                 let data = response.data
                 do {
@@ -43,7 +44,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                 print(error)
             }
         }
-        
+ 
         reloadButton.layer.cornerRadius = 4
         reloadButton.rx.tap.subscribe { [weak self] _ in
             self?.cardImage()

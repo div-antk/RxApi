@@ -15,14 +15,16 @@ enum MtgAPI {
 extension MtgAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.magicthegathering.io/v1")!
+        return URL(string: "https://api.magicthegathering.io/v1/cards")!
     }
     
     var path: String {
         switch self {
         case .cards:
-            return "/cards"
+            return ""
         }
+//        case .name(let name):
+//            return
     }
     
     var method: Moya.Method {
