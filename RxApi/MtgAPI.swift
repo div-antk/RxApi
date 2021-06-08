@@ -10,7 +10,7 @@ import Moya
 
 enum MtgAPI {
     case cards
-    case name(name: String)
+    case card(name: String)
 }
 
 extension MtgAPI: TargetType {
@@ -23,8 +23,8 @@ extension MtgAPI: TargetType {
         switch self {
         case .cards:
             return ""
-        case .name(let name):
-            return ""
+        case .card(let name):
+            return "?\(name)"
         }
     }
     

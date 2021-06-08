@@ -46,7 +46,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
 //            }
 //        }
 //
-        provider.request(.name(name: "dark")) { (result) in
+        provider.request(.card(name: "dark")) { (result) in
             switch result {
             
             case .success(let response):
@@ -59,6 +59,8 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                     print(error)
                 }
             case .failure(let error):
+                print("aaa", result)
+
                 print(error)
             }
         }
