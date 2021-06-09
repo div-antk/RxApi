@@ -10,7 +10,7 @@ import Moya
 
 struct CardNameResponse: Codable {
 //    let name: String?
-    let cardList: [Cards]
+    let cards: [Cards]
 }
 
 struct Cards: Codable {

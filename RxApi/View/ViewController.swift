@@ -19,7 +19,6 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var reloadButton: UIButton!
     
-//    var cards: CardListResponse?
     var cards: CardNameResponse?
     
     private let disposeBag = DisposeBag()
@@ -46,12 +45,14 @@ class ViewController: UIViewController, StoryboardInstantiatable {
 //            }
 //        }
 //
-        provider.request(.card(name: "dark")) { (result) in
+        provider.request(.card("sliver")) { (result) in
             switch result {
             
             case .success(let response):
                 let data = response.data
                 do {
+                    print("(´・ω・｀)")
+
                     let cards = try JSONDecoder().decode(CardNameResponse.self, from: data)
                     self.cards = cards
                     self.cardImage()
@@ -71,9 +72,9 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     }
     
     func cardImage() {
-        if let cardImage = cards?.cardList.randomElement()?.imageUrl {
+        if let cardImage = cards?.cards.randomElement()?.imageUrl {
 //        if let cardImage = cards?.cards.randomElement()?.imageUrl {
-            print(cardImage)
+            print(cards?.cards.count)
             cardImageView.kf.setImage(with: URL(string: cardImage))
         }
     }

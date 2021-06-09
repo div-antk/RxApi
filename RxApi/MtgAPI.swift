@@ -9,27 +9,36 @@ import Foundation
 import Moya
 
 enum MtgAPI {
-    case cards
-    case card(name: String)
+//    case cards
+    case card(String)
 }
 
 extension MtgAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.magicthegathering.io/v1/cards")!
+        return URL(string: "https://api.magicthegathering.io/v1")!
     }
     
     var path: String {
         switch self {
-        case .cards:
-            return ""
-        case .card(let name):
-            return "?\(name)"
+//        case .cards:
+//            return ""
+        case .card:
+            return "/cards"
         }
     }
     
     var method: Moya.Method {
         return Moya.Method.get
+    }
+    
+    var parameters: [String: String]? {
+        switch self {
+        case .card(let cardName):
+            return ["name" : cardName]
+//        case .cards:
+//            return nil
+        }
     }
     
     var sampleData: Data {
@@ -39,6 +48,10 @@ extension MtgAPI: TargetType {
     // POSTで送る値。無いので requestPlain
     var task: Task {
         return .requestPlain
+    }
+    
+    var parameterEncoding: ParameterEncoding {
+        return URLEncoding.default
     }
     
     var headers: [String : String]? {
