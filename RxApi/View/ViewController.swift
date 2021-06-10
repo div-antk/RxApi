@@ -19,7 +19,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var reloadButton: UIButton!
     
-    var cards: CardNameResponse?
+    var cards: CardListResponse?
     
     private let disposeBag = DisposeBag()
     
@@ -28,23 +28,6 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         
         let provider = MoyaProvider<MtgAPI>()
         
-//        provider.request(.cards) { (result) in
-//            switch result {
-//
-//            case .success(let response):
-//                let data = response.data
-//                do {
-//                    let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
-//                    self.cards = cards
-//                    self.cardImage()
-//                } catch(let error) {
-//                    print(error)
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//
         provider.request(.card("sliver")) { (result) in
             switch result {
             
@@ -53,7 +36,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
                 do {
                     print("(´・ω・｀)", response.request?.url)
 
-                    let cards = try JSONDecoder().decode(CardNameResponse.self, from: data)
+                    let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
                     self.cards = cards
                     self.cardImage()
                 } catch(let error) {
@@ -73,8 +56,6 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     
     func cardImage() {
         if let cardImage = cards?.cards.randomElement()?.imageUrl {
-//        if let cardImage = cards?.cards.randomElement()?.imageUrl {
-            print(cards?.cards.count)
             cardImageView.kf.setImage(with: URL(string: cardImage))
         }
     }
