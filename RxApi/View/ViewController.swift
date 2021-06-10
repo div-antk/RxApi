@@ -51,7 +51,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             case .success(let response):
                 let data = response.data
                 do {
-                    print("(´・ω・｀)")
+                    print("(´・ω・｀)", response.request?.url)
 
                     let cards = try JSONDecoder().decode(CardNameResponse.self, from: data)
                     self.cards = cards

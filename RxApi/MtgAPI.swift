@@ -32,22 +32,15 @@ extension MtgAPI: TargetType {
         return Moya.Method.get
     }
     
-    var parameters: [String: String]? {
-        switch self {
-        case .card(let cardName):
-            return ["name" : cardName]
-//        case .cards:
-//            return nil
-        }
-    }
-    
     var sampleData: Data {
         return Data()
     }
     
-    // POSTで送る値。無いので requestPlain
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .card(let cardName):
+            return .requestParameters(parameters: ["name" : cardName], encoding: URLEncoding.queryString)
+        }
     }
     
     var parameterEncoding: ParameterEncoding {
