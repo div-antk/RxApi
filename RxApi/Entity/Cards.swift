@@ -14,4 +14,5 @@ struct CardListResponse: Codable {
 
 struct Card: Codable {
     let imageUrl: String?
+    let type: String?
 }

@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum MtgAPI {
-//    case cards
+    //    case cards
     case card(String)
 }
 
@@ -21,8 +21,8 @@ extension MtgAPI: TargetType {
     
     var path: String {
         switch self {
-//        case .cards:
-//            return ""
+        //        case .cards:
+        //            return ""
         case .card:
             return "/cards"
         }
@@ -39,7 +39,10 @@ extension MtgAPI: TargetType {
     var task: Task {
         switch self {
         case .card(let cardName):
-            return .requestParameters(parameters: ["name" : cardName], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: [
+                "name" : cardName,
+                "type" : "land"
+            ], encoding: URLEncoding.queryString)
         }
     }
     

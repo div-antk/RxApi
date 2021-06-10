@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNf-f3-U9B">
-                                <rect key="frame" x="20" y="56" width="374" height="32"/>
+                                <rect key="frame" x="20" y="64" width="374" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Fwh-Gr-fxa"/>
@@ -26,7 +26,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FJd-R7-rzG">
-                                <rect key="frame" x="20" y="128" width="374" height="614"/>
+                                <rect key="frame" x="20" y="116" width="374" height="646"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx3-sI-jEs">
                                 <rect key="frame" x="20" y="782" width="374" height="40"/>
@@ -42,16 +42,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NNf-f3-U9B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="1cP-KY-QRj"/>
-                            <constraint firstItem="Tx3-sI-jEs" firstAttribute="top" secondItem="FJd-R7-rzG" secondAttribute="bottom" constant="40" id="7Gw-Ay-Nni"/>
+                            <constraint firstItem="NNf-f3-U9B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="1cP-KY-QRj"/>
+                            <constraint firstItem="Tx3-sI-jEs" firstAttribute="top" secondItem="FJd-R7-rzG" secondAttribute="bottom" constant="20" id="7Gw-Ay-Nni"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tx3-sI-jEs" secondAttribute="trailing" constant="20" id="AgI-ko-wBw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NNf-f3-U9B" secondAttribute="trailing" constant="20" id="F1n-ek-knj"/>
-                            <constraint firstItem="FJd-R7-rzG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IVD-fL-CFF"/>
-                            <constraint firstItem="FJd-R7-rzG" firstAttribute="top" secondItem="NNf-f3-U9B" secondAttribute="bottom" constant="40" id="IoY-Uz-dqI"/>
+                            <constraint firstItem="FJd-R7-rzG" firstAttribute="top" secondItem="NNf-f3-U9B" secondAttribute="bottom" constant="20" id="IoY-Uz-dqI"/>
                             <constraint firstItem="NNf-f3-U9B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KcQ-bB-R3a"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FJd-R7-rzG" secondAttribute="trailing" constant="20" id="PFe-Ch-XpJ"/>
                             <constraint firstItem="Tx3-sI-jEs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SG6-WR-Lak"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tx3-sI-jEs" secondAttribute="bottom" constant="40" id="cMG-bR-imf"/>
+                            <constraint firstItem="FJd-R7-rzG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lIT-Qz-a08"/>
+                            <constraint firstItem="FJd-R7-rzG" firstAttribute="leading" secondItem="NNf-f3-U9B" secondAttribute="leading" id="lSU-h2-AqQ"/>
                         </constraints>
                     </view>
                     <connections>
