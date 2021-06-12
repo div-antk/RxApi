@@ -11,5 +11,10 @@ import RxCocoa
 
 class SearchViewModel {
     
+    var searchText: Observable<String> {
+        return searchText
+    }
+    
+    private let searchText = PublishSubject<String>()
 
 }

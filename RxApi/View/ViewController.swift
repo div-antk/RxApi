@@ -23,6 +23,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     var cardName: String?
     
     private let disposeBag = DisposeBag()
+    private let viewModel = SearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,12 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         reloadButton.rx.tap.subscribe { [weak self] _ in
             self?.cardImage()
         }.disposed(by: disposeBag)
+        
+        searchTextField.rx.text.orEmpty.asObservable()
+            .subscribe { [weak self] in
+                guard let name = $0.element else { return }
+                self?.viewModel.searchText
+            }
     }
     
     func cardImage() {
