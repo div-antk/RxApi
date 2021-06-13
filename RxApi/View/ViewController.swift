@@ -36,7 +36,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             case .success(let response):
                 let data = response.data
                 print("(´・ω・｀)", response.request?.url)
-
+                
                 do {
                     let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
                     self.cards = cards
@@ -56,8 +56,14 @@ class ViewController: UIViewController, StoryboardInstantiatable {
         searchTextField.rx.text.orEmpty.asObservable()
             .subscribe { [weak self] in
                 guard let name = $0.element else { return }
-                self?.viewModel.searchText
+                self?.viewModel.set(text: name)
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.searchText.asObservable()
+            .subscribe { [weak self] in
+                self?.searchTextField.text = $0.element
+            }.disposed(by: disposeBag)
     }
     
     func cardImage() {

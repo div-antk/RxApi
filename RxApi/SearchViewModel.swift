@@ -12,9 +12,12 @@ import RxCocoa
 class SearchViewModel {
     
     var searchText: Observable<String> {
-        return searchText
+        return searchTextSubject
     }
     
-    private let searchText = PublishSubject<String>()
+    private let searchTextSubject = PublishSubject<String>()
 
+    func set(text: String) {
+        searchText.onNext(text)
+    }
 }
