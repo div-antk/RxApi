@@ -35,7 +35,6 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             
             case .success(let response):
                 let data = response.data
-                print("(´・ω・｀)", response.request?.url)
                 
                 do {
                     let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
@@ -53,16 +52,16 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             self?.cardImage()
         }.disposed(by: disposeBag)
         
-        searchTextField.rx.text.orEmpty.asObservable()
-            .subscribe { [weak self] in
-                guard let name = $0.element else { return }
-                self?.viewModel.set(text: name)
+        
+        searchTextField.rx.text.orEmpty.asObservable().subscribe { [weak self] in
+                guard let text = $0.element else { return }
+                self?.viewModel.set(text: text)
             }
             .disposed(by: disposeBag)
         
-        viewModel.searchText.asObservable()
-            .subscribe { [weak self] in
-                self?.searchTextField.text = $0.element
+        // VMから受け取ってカード名に代入
+        viewModel.searchText.asObservable().subscribe { [weak self] in
+                self?.cardName = $0.element
             }.disposed(by: disposeBag)
     }
     

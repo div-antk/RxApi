@@ -17,7 +17,8 @@ class SearchViewModel {
     
     private let searchTextSubject = PublishSubject<String>()
 
+    // VCから受け取る
     func set(text: String) {
-        searchText.onNext(text)
+        searchTextSubject.onNext(text)
     }
 }
