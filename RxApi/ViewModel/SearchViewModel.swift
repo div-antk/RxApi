@@ -19,6 +19,7 @@ class SearchViewModel {
 
     // VCから受け取る
     func set(text: String) {
+        print("(´・ω・｀)", text)
         searchTextSubject.onNext(text)
     }
 }
