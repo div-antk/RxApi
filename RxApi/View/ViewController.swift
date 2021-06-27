@@ -26,6 +26,10 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     private let viewModel = SearchViewModel()
     //    private let cardRepository = CardRepository()
     
+//    let viewModel: SerchViewModelType = SearchViewModel(
+    
+//    )
+    
     let provider = MoyaProvider<MtgAPI>()
     
     override func viewDidLoad() {
