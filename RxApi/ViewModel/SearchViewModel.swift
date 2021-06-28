@@ -23,7 +23,7 @@ protocol SearchViewModelOutputs {
 class SearchViewModel: SearchViewModelOutputs {
     
     // テストコードを明確にするため、通信やスケジューラなどの依存するオブジェクトを外部から注入できるようにする（DI）
-    private let mtgAPI: MtgAPI
+    private let cardRepository = CardRepository()
     private let scheduler: SchedulerType
     
     // MARK: OUTPUT
@@ -34,9 +34,9 @@ class SearchViewModel: SearchViewModelOutputs {
     
     private let searchTextChangeProperty = BehaviorRelay<String>(value: "")
     
-    init(mtgAPI: MtgAPI,
+    init(cardRepository: CardRepository,
          scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
-        self.mtgAPI = mtgAPI
+        self.cardRepository = cardRepository
         self.scheduler = scheduler
         
         // PublishRelayとして初期値を持たない出力用内部Subjectを用意
@@ -56,8 +56,9 @@ class SearchViewModel: SearchViewModelOutputs {
         
         let sequence = filterdText
             .flatMapLatest { [unowned self] text -> Observable<Event<[CardListResponse]>> in
-                return self.mtgAPI
-                    .search(from: text)
+                return self.cardRepository
+                    .getCards(cardName: text)
+//                    .search(from: text)
                     .materialize()
             }
             .share(replay: 1)
