@@ -8,11 +8,11 @@
 import Foundation
 import Moya
 
-struct CardListResponse: Codable {
+public struct CardListResponse: Codable {
     let cards: [Card]
 }
 
-struct Card: Codable {
+public struct Card: Codable {
     let imageUrl: String?
     let type: String?
 }

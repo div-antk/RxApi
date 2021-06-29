@@ -10,17 +10,19 @@ import RxSwift
 import RxCocoa
 import Moya
 
-public protocol CardListResponse {
-    func getCards(from cardName: String) -> Observable<[Card]>
+public protocol CardRepository {
+    func getCards(from cardName: String)
 }
 
-public class CardRepository: CardListResponse {
+public class DefaultCardRepository: CardRepository {
     
-    let provider = MoyaProvider<MtgAPI>()
     var cardName: String?
     var cards = [Card]()
     
-    public func getCards(from cardName: String) -> Observable<[Card]> {
+    public func getCards(from cardName: String) {
+        
+        let provider = MoyaProvider<MtgAPI>()
+        
         provider.request(.card(cardName)) { (result) in
             switch result {
 
@@ -29,8 +31,8 @@ public class CardRepository: CardListResponse {
 
                 do {
                     let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
-                    self.cards = cards
-                    self.cardImage()
+                    self.cards = cards.cards
+//                    self.cardImage()
                 } catch(let error) {
                     print(error)
                 }
