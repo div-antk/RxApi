@@ -16,20 +16,20 @@ protocol SearchViewModelInputs {
 
 protocol SearchViewModelOutputs {
     var searchDescription: Observable<String> { get }
-    var cardList: Observable<[CardListResponse]> { get }
+    var cardList: Observable<[Card]> { get }
     var error: Observable<Error> { get }
 }
 
 class SearchViewModel: SearchViewModelOutputs {
-    
+    private let disposeBag = DisposeBag()
     // テストコードを明確にするため、通信やスケジューラなどの依存するオブジェクトを外部から注入できるようにする（DI）
-    private let cardRepository = CardRepository()
+    private let cardRepository: CardRepository
     private let scheduler: SchedulerType
     
     // MARK: OUTPUT
     // 後述する outputs プロパティ経由でアクセスする
     let searchDescription: Observable<String>
-    let cardList: Observable<[CardListResponse]>
+    let cardList: Observable<[Card]>
     let error: Observable<Error>
     
     private let searchTextChangeProperty = BehaviorRelay<String>(value: "")
@@ -40,7 +40,7 @@ class SearchViewModel: SearchViewModelOutputs {
         self.scheduler = scheduler
         
         // PublishRelayとして初期値を持たない出力用内部Subjectを用意
-        let _cardList = PublishRelay<[CardListResponse]>()
+        let _cardList = PublishRelay<[Card]>()
         self.cardList = _cardList.asObservable()
         
         let _error = PublishRelay<Error>()
@@ -55,10 +55,9 @@ class SearchViewModel: SearchViewModelOutputs {
         searchDescription = _searchResultText.asObservable()
         
         let sequence = filterdText
-            .flatMapLatest { [unowned self] text -> Observable<Event<[CardListResponse]>> in
+            .flatMapLatest { [unowned self] text -> Observable<Event<[Card]>> in
                 return self.cardRepository
-                    .getCards(cardName: text)
-//                    .search(from: text)
+                    .getCards(from: text)
                     .materialize()
             }
             .share(replay: 1)

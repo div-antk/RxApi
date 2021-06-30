@@ -10,47 +10,35 @@ import RxSwift
 import RxCocoa
 import Moya
 
-public protocol CardRepository {
-    func getCards(from cardName: String)
+final class CardRepository {
+    private static let provider = MoyaProvider<MtgAPI>()
+    private static let disposeBag = DisposeBag()
 }
 
-public class DefaultCardRepository: CardRepository {
+extension CardRepository {
     
-    var cardName: String?
-    var cards = [Card]()
-    
-    public func getCards(from cardName: String) {
-        
-        let provider = MoyaProvider<MtgAPI>()
-        
-        provider.request(.card(cardName)) { (result) in
-            switch result {
-
-            case .success(let response):
-                let data = response.data
-
-                do {
-                    let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
-                    self.cards = cards.cards
-//                    self.cardImage()
-                } catch(let error) {
-                    print(error)
-                }
-            case .failure(let error):
-                print(error)
+    static func getCards(from cardName: String) -> Observable<[Card]> {
+        provider.rx.request(.card(cardName))
+            .map { response in
+                let decoder = JSONDecoder()
+                return try decoder.decode([Card].self, from: response.data)
             }
-        }
+            .asObservable()
     }
 }
 
-//class CardRepository {
 //
-//    let provider = MoyaProvider<MtgAPI>()
+//public protocol CardRepository {
+//    func getCards(from cardName: String) -> Observable<[Card]>
+//}
+
+//public class DefaultCardRepository: CardRepository {
+//
 //    var cardName: String?
 //    var cards = [Card]()
 //
+//    public func getCards(from cardName: String) -> Observable<[Card]> {
 //
-//    public func getCards(cardName: String) {
 //
 //        provider.request(.card(cardName)) { (result) in
 //            switch result {
@@ -60,8 +48,8 @@ public class DefaultCardRepository: CardRepository {
 //
 //                do {
 //                    let cards = try JSONDecoder().decode(CardListResponse.self, from: data)
-//                    self.cards = cards
-//                    self.cardImage()
+//                    self.cards = cards.cards
+////                    self.cardImage()
 //                } catch(let error) {
 //                    print(error)
 //                }
@@ -71,5 +59,3 @@ public class DefaultCardRepository: CardRepository {
 //        }
 //    }
 //}
-
-
