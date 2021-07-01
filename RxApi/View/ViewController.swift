@@ -23,7 +23,11 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     var cardName: String?
     
     private let disposeBag = DisposeBag()
-    private let viewModel = SearchViewModel()
+
+
+    let viewModel: SearchViewModelType = SearchViewModel(
+        cardRepository: CardRepository()
+    )
     //    private let cardRepository = CardRepository()
     
 //    let viewModel: SerchViewModelType = SearchViewModel(

@@ -20,7 +20,13 @@ protocol SearchViewModelOutputs {
     var error: Observable<Error> { get }
 }
 
+protocol SearchViewModelType {
+    var inputs: SearchViewModelInputs { get }
+    var outputs: SearchViewModelOutputs { get }
+}
+
 class SearchViewModel: SearchViewModelOutputs {
+    
     private let disposeBag = DisposeBag()
     // テストコードを明確にするため、通信やスケジューラなどの依存するオブジェクトを外部から注入できるようにする（DI）
     private let cardRepository: CardRepository
@@ -36,6 +42,7 @@ class SearchViewModel: SearchViewModelOutputs {
     
     init(cardRepository: CardRepository,
          scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
+        
         self.cardRepository = cardRepository
         self.scheduler = scheduler
         
@@ -61,6 +68,8 @@ class SearchViewModel: SearchViewModelOutputs {
                     .materialize()
             }
             .share(replay: 1)
+        
+        
     }
 }
 
