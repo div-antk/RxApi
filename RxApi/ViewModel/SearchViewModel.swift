@@ -61,14 +61,16 @@ class SearchViewModel: SearchViewModelOutputs {
         let _searchResultText = PublishRelay<String>()
         searchDescription = _searchResultText.asObservable()
         
-        let sequence = filterdText
-            .flatMapLatest { [unowned self] text -> Observable<Event<[Card]>> in
-                return self.cardRepository
-                    .getCards(from: text)
-                    .materialize()
-            }
-            .share(replay: 1)
+//        let sequence = filterdText
+//            .flatMapLatest { [weak self] text -> Observable<Event<[Card]>> in
+//                return self.cardRepository
+//                    .getCards(from: text)
+//                    .materialize()
+//            }
+//            .share(replay: 1)
         
+        CardRepository.getCards(from: searchDescription)
+            .
         
     }
 }
