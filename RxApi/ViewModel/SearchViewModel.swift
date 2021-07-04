@@ -8,14 +8,14 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Moya
 
 // 入力インターフェースをプロトコルにより明確化
 protocol SearchViewModelInputs {
-    func searchTextChanged(_ searchText: String)
+    var searchText: AnyObserver<String> { get }
 }
 
 protocol SearchViewModelOutputs {
-    var searchDescription: Observable<String> { get }
     var cardList: Observable<[Card]> { get }
     var error: Observable<Error> { get }
 }
@@ -25,27 +25,20 @@ protocol SearchViewModelType {
     var outputs: SearchViewModelOutputs { get }
 }
 
-class SearchViewModel: SearchViewModelOutputs {
+class SearchViewModel: SearchViewModelInputs, SearchViewModelOutputs {
     
-    private let disposeBag = DisposeBag()
-    // テストコードを明確にするため、通信やスケジューラなどの依存するオブジェクトを外部から注入できるようにする（DI）
-    private let cardRepository: CardRepository
-    private let scheduler: SchedulerType
+    // MARK: INPUTS
+    var searchText: AnyObserver<String>
     
-    // MARK: OUTPUT
-    // 後述する outputs プロパティ経由でアクセスする
-    let searchDescription: Observable<String>
+    // MARK: OUTPUTS
     let cardList: Observable<[Card]>
     let error: Observable<Error>
     
-    private let searchTextChangeProperty = BehaviorRelay<String>(value: "")
-    
-    init(cardRepository: CardRepository,
-         scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
-        
-        self.cardRepository = cardRepository
-        self.scheduler = scheduler
-        
+    // MARK: OTHER
+    private let provider = MoyaProvider<MtgAPI>()
+    private let disposeBag = DisposeBag()
+  
+    init() {
         // PublishRelayとして初期値を持たない出力用内部Subjectを用意
         let _cardList = PublishRelay<[Card]>()
         self.cardList = _cardList.asObservable()
@@ -53,13 +46,13 @@ class SearchViewModel: SearchViewModelOutputs {
         let _error = PublishRelay<Error>()
         self.error = _error.asObservable()
         
-        let filterdText = searchTextChangeProperty
-            .debounce(.milliseconds(300), scheduler: scheduler)
-            .filter { $0.count >= 1 }
-            .share(replay: 1)
-        
-        let _searchResultText = PublishRelay<String>()
-        searchDescription = _searchResultText.asObservable()
+        let _searchText = PublishRelay<String>()
+        self.searchText = AnyObserver<String>() { event in
+            // textをguard letで定義
+            guard let text = event.element else { return }
+            // acceptでPublishRelayに.nextイベントを送る
+            _searchText.accept(text)
+        }
         
 //        let sequence = filterdText
 //            .flatMapLatest { [weak self] text -> Observable<Event<[Card]>> in
@@ -70,22 +63,7 @@ class SearchViewModel: SearchViewModelOutputs {
 //            .share(replay: 1)
         
         CardRepository.getCards(from: searchDescription)
-            .
+            
         
     }
 }
-
-//class SearchViewModel {
-//
-//    var searchText: Observable<String> {
-//        return searchTextSubject
-//    }
-//
-//    private let searchTextSubject = PublishSubject<String>()
-//
-//    // VCから受け取る
-//    func set(text: String) {
-//        print("(´・ω・｀)", text)
-//        searchTextSubject.onNext(text)
-//    }
-//}
