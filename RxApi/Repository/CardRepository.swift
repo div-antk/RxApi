@@ -17,8 +17,9 @@ final class CardRepository {
 
 extension CardRepository {
     
-    static func getCards(from cardName: String) -> Observable<[Card]> {
+    static func getCards(cardName: String) -> Observable<[Card]> {
         provider.rx.request(.card(cardName))
+            // mapでレスポンスの配列にdecoderを適応
             .map { response in
                 let decoder = JSONDecoder()
                 return try decoder.decode([Card].self, from: response.data)
