@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0ED548C3127B0B4686DFA30D /* Pods_RxApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1100F8FEB6A0202AA6C0D0 /* Pods_RxApi.framework */; };
-		3B0731CB265E8ECD0043BD5A /* ProblemAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0731CA265E8ECD0043BD5A /* ProblemAPI.swift */; };
 		3B38150B2655595700FAA7B8 /* MtgAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B38150A2655595700FAA7B8 /* MtgAPI.swift */; };
 		3B9376372646DB6C00937DAE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9376362646DB6C00937DAE /* SearchViewModel.swift */; };
 		3BDF52EB263C4C54006E5EDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF52EA263C4C54006E5EDF /* AppDelegate.swift */; };
@@ -22,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B0731CA265E8ECD0043BD5A /* ProblemAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemAPI.swift; sourceTree = "<group>"; };
 		3B38150A2655595700FAA7B8 /* MtgAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgAPI.swift; sourceTree = "<group>"; };
 		3B9376362646DB6C00937DAE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3BDF52E7263C4C54006E5EDF /* RxApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +87,6 @@
 				3BE50A2226779B1100D3BF77 /* ViewModel */,
 				3BF5D748265912F300A272AF /* Entity */,
 				3B38150A2655595700FAA7B8 /* MtgAPI.swift */,
-				3B0731CA265E8ECD0043BD5A /* ProblemAPI.swift */,
 				3BDF52F3263C4C56006E5EDF /* Assets.xcassets */,
 				3BDF52F5263C4C56006E5EDF /* LaunchScreen.storyboard */,
 				3BDF52F8263C4C56006E5EDF /* Info.plist */,
@@ -256,7 +253,6 @@
 				3BE50A2426779B3400D3BF77 /* CardRepository.swift in Sources */,
 				3BDF52EF263C4C54006E5EDF /* ViewController.swift in Sources */,
 				3BDF52EB263C4C54006E5EDF /* AppDelegate.swift in Sources */,
-				3B0731CB265E8ECD0043BD5A /* ProblemAPI.swift in Sources */,
 				3B38150B2655595700FAA7B8 /* MtgAPI.swift in Sources */,
 				3BEE4A5F266E60FF00F998D7 /* Cards.swift in Sources */,
 				3BDF52ED263C4C54006E5EDF /* SceneDelegate.swift in Sources */,

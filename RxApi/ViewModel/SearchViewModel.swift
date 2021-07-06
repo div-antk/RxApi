@@ -61,3 +61,9 @@ class SearchViewModel: SearchViewModelInputs, SearchViewModelOutputs {
         
     }
 }
+
+// VCからsearchViewModel.inputsでアクセスできる
+extension SearchViewModel: SearchViewModelType {
+    var inputs: SearchViewModelInputs { return self }
+    var outputs: SearchViewModelOutputs { return self }
+}
