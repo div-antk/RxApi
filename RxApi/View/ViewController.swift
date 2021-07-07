@@ -40,7 +40,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             .disposed(by: disposeBag)
         
         // VMから受け取る
-        print(searchViewModel.outputs)
+        
         
 //            .asObservable().subscribe { [weak self] in
 //                guard let text = $0.element else { return }
