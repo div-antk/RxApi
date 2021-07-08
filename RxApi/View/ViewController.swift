@@ -19,7 +19,7 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var reloadButton: UIButton!
     
-    var cards: CardListResponse?
+    var cards: [Card?]?
     var cardName: String?
     
     private var searchViewModel: SearchViewModel!
@@ -40,7 +40,11 @@ class ViewController: UIViewController, StoryboardInstantiatable {
             .disposed(by: disposeBag)
         
         // VMから受け取る
-        
+        searchViewModel.outputs.cardList
+            .asObservable().subscribe { [weak self] in
+                self?.cards = $0.element
+            }.disposed(by: disposeBag)
+            
         
 //            .asObservable().subscribe { [weak self] in
 //                guard let text = $0.element else { return }
@@ -56,7 +60,8 @@ class ViewController: UIViewController, StoryboardInstantiatable {
     }
     
     func cardImage() {
-        if let cardImage = cards?.cards.randomElement()?.imageUrl {
+        if let cardImage = cards?.randomElement()??.imageUrl {
+            print(cards)
             cardImageView.kf.setImage(with: URL(string: cardImage))
         }
     }
