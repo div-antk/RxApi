@@ -21,8 +21,11 @@ extension CardRepository {
         provider.rx.request(.card(cardName))
             // mapでレスポンスの配列にdecoderを適応
             .map { response in
+                print("(´・ω・｀)", response.data)
                 let decoder = JSONDecoder()
-                return try decoder.decode([Card].self, from: response.data)
+                let cards = try decoder.decode(CardListResponse.self, from: response.data)
+                return cards.cards
+//                return try decoder.decode([Card].self, from: response.data)
             }
             .asObservable()
     }

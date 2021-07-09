@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 enum MtgAPI {
-    //    case cards
     case card(String)
 }
 
@@ -21,8 +20,6 @@ extension MtgAPI: TargetType {
     
     var path: String {
         switch self {
-        //        case .cards:
-        //            return ""
         case .card:
             return "/cards"
         }
