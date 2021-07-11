@@ -16,8 +16,7 @@ import Kingfisher
 class ViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var cardImageView: UIImageView!
-    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var cards: [Card?]?
     var cardImg: String?

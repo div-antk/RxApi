@@ -17,6 +17,8 @@
 		3BDF52F4263C4C56006E5EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF52F3263C4C56006E5EDF /* Assets.xcassets */; };
 		3BDF52F7263C4C56006E5EDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF52F5263C4C56006E5EDF /* LaunchScreen.storyboard */; };
 		3BE50A2426779B3400D3BF77 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE50A2326779B3400D3BF77 /* CardRepository.swift */; };
+		3BE60C98269B166F0093F176 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE60C96269B166E0093F176 /* CardCollectionViewCell.swift */; };
+		3BE60C99269B166F0093F176 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE60C97269B166E0093F176 /* CardCollectionViewCell.xib */; };
 		3BEE4A5F266E60FF00F998D7 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE4A5E266E60FF00F998D7 /* Cards.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		3BDF52F6263C4C56006E5EDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BDF52F8263C4C56006E5EDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE50A2326779B3400D3BF77 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
+		3BE60C96269B166E0093F176 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		3BE60C97269B166E0093F176 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		3BEE4A5E266E60FF00F998D7 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		90FDF59392E38124EC5FCCF7 /* Pods-RxApi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxApi.debug.xcconfig"; path = "Target Support Files/Pods-RxApi/Pods-RxApi.debug.xcconfig"; sourceTree = "<group>"; };
 		CF1100F8FEB6A0202AA6C0D0 /* Pods_RxApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +59,8 @@
 			children = (
 				3BDF52EE263C4C54006E5EDF /* ViewController.swift */,
 				3BDF52F0263C4C54006E5EDF /* ViewController.storyboard */,
+				3BE60C96269B166E0093F176 /* CardCollectionViewCell.swift */,
+				3BE60C97269B166E0093F176 /* CardCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE60C99269B166F0093F176 /* CardCollectionViewCell.xib in Resources */,
 				3BDF52F7263C4C56006E5EDF /* LaunchScreen.storyboard in Resources */,
 				3BDF52F4263C4C56006E5EDF /* Assets.xcassets in Resources */,
 				3BDF52F2263C4C54006E5EDF /* ViewController.storyboard in Resources */,
@@ -249,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE60C98269B166F0093F176 /* CardCollectionViewCell.swift in Sources */,
 				3B9376372646DB6C00937DAE /* SearchViewModel.swift in Sources */,
 				3BE50A2426779B3400D3BF77 /* CardRepository.swift in Sources */,
 				3BDF52EF263C4C54006E5EDF /* ViewController.swift in Sources */,

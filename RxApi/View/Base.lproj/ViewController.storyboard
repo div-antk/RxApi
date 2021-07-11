@@ -58,6 +58,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="r4V-oh-Ljv" id="QgS-in-gou"/>
                         <outlet property="searchTextField" destination="NNf-f3-U9B" id="Oig-Z8-t59"/>
                     </connections>
                 </viewController>
