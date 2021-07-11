@@ -30,7 +30,7 @@
             </constraints>
             <size key="customSize" width="232" height="275"/>
             <connections>
-                <outlet property="cardImageVIew" destination="YaJ-Fi-bpL" id="fwk-HK-aV3"/>
+                <outlet property="cardImageView" destination="YaJ-Fi-bpL" id="fwk-HK-aV3"/>
             </connections>
             <point key="canvasLocation" x="-14.492753623188406" y="132.92410714285714"/>
         </collectionViewCell>

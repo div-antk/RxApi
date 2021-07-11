@@ -11,7 +11,7 @@ import InstantiateStandard
 
 class CardCollectionViewCell: UICollectionViewCell, Reusable {
 
-    @IBOutlet weak var cardImageVIew: UIImageView!
+    @IBOutlet weak var cardImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
